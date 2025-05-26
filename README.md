@@ -1,4 +1,4 @@
-# FortranShuttleProject
+# Fortran JMU Project
 
 This contains original Fortran 90 code I wrote for Math 448 at James Madison University in 2007.  
 
