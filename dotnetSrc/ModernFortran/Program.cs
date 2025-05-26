@@ -161,11 +161,11 @@ for (int x = 0; x < plotWidth; x++)
     if (x == 0)
         Console.Write($"{wStart:F2}");
     else if (x == mid)
-        Console.Write($"{wStart + (wEnd - wStart) / 2:F2}".PadLeft(mid - 2));
+        Console.Write($"{wStart + (wEnd - wStart) / 2:F2}".PadLeft(plotWidth / 2 - 4));
     else if (x == plotWidth - 1)
-        Console.Write($"{wEnd:F2}".PadLeft(plotWidth - mid - 4));
-    else
-        Console.Write(" ");
+        Console.Write($"{wEnd:F2}".PadLeft(plotWidth - mid));
+    // else
+        // Console.Write(" ");
 }
 Console.WriteLine();
 
