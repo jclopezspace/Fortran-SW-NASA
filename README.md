@@ -6,8 +6,6 @@ The folder ````fortranSrc```` has the original unmodified Fortran code I wrote f
 
 The folder ````dotnetSrc```` has GitHub Copilot generated code that converted the Fortran 90 code into C# code.
 
-I also used GitHub Copilot to generated ASCII art of a NASA inspired Shuttle and a scatter plot of the numerical results.
-
 ````
 
        _    
