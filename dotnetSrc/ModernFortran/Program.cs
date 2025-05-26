@@ -182,8 +182,6 @@ static void PrintAsciiScatterPlot(int[] iterations)
             Console.Write($"{wStart + (wEnd - wStart) / 2:F2}".PadLeft(plotWidth / 2 - 4));
         else if (x == plotWidth - 1)
             Console.Write($"{wEnd:F2}".PadLeft(plotWidth - mid));
-        // else
-        // Console.Write(" ");
     }
     Console.WriteLine();
 }
