@@ -6,43 +6,16 @@ Console.WriteLine("James Madison University, Mathematics Department");
 Console.WriteLine("_________________________________________________________");
 Console.WriteLine();
 
-# region ACSI ART :)
-
-Console.WriteLine("       _    ");
-Console.WriteLine("      /_\\  ");
-Console.WriteLine("     /___\\ ");
-Console.WriteLine("    |=   =| ");
-Console.WriteLine("    | NASA| ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("    |     | ");
-Console.WriteLine("   /|##!##|\\");
-Console.WriteLine("  / |##!##| \\");
-Console.WriteLine(" /  |##!##|  \\");
-Console.WriteLine("|  / ^ | ^ \\  |");
-Console.WriteLine("| /  ( | )  \\ |");
-Console.WriteLine("|/   ( | )   \\|");
-Console.WriteLine("    ((   ))");
-Console.WriteLine("   ((  :  ))");
-Console.WriteLine("   ((  :  ))");
-Console.WriteLine("    ((   ))");
-Console.WriteLine("     (( ))");
-Console.WriteLine("      ( )");
-Console.WriteLine("       .");
-Console.WriteLine("       .");
-Console.WriteLine("       .");
+Console.Write("Would you like to include ASCII art in the output? (y/n): ");
+string? asciiArtInput = Console.ReadLine();
+bool includeAsciiArt = asciiArtInput != null && asciiArtInput.Trim().ToLower().StartsWith("y");
 Console.WriteLine();
 
-# endregion
+if (includeAsciiArt)
+{
+    PrintAsciiShuttle();
+    Console.WriteLine();
+}
 
 string filename = "FILTER_IN.DAT";
 
@@ -94,7 +67,6 @@ int[] iterations = new int[99];
 
 Console.WriteLine("(W, Iterations)");
 
-# region Scatter Plot of W vs the number of iterations
 
 for (int i = 1; i <= 99; i++)
 {
@@ -105,68 +77,113 @@ for (int i = 1; i <= 99; i++)
     Console.WriteLine($"{w:F2}, {iterations[i - 1]}");
 }
 
-int maxIterations = 0;
-for (int i = 0; i < iterations.Length; i++)
+if (includeAsciiArt)
 {
-    if (iterations[i] > maxIterations)
-        maxIterations = iterations[i];
+    PrintAsciiScatterPlot(iterations);
 }
 
-int plotHeight = 20; // Number of rows for the y-axis
-int plotWidth = iterations.Length; // One column per w value
-
-// Scale function for y-axis
-int ScaleY(int value)
+// Copilot Generated NASA Shuttle ASCII Art
+static void PrintAsciiShuttle()
 {
-    return plotHeight - 1 - (int)Math.Round((double)value / maxIterations * (plotHeight - 1));
-}
-
-// Build plot
-char[,] plot = new char[plotHeight, plotWidth];
-for (int y = 0; y < plotHeight; y++)
-    for (int x = 0; x < plotWidth; x++)
-        plot[y, x] = ' ';
-
-// Plot points
-for (int x = 0; x < plotWidth; x++)
-{
-    int y = ScaleY(iterations[x]);
-    plot[y, x] = '*';
-}
-
-// Print y-axis labels and plot
-Console.WriteLine();
-for (int y = 0; y < plotHeight; y++)
-{
-    int iterLabel = (int)Math.Round(maxIterations * (double)(plotHeight - 1 - y) / (plotHeight - 1));
-    Console.Write($"{iterLabel,4} | ");
-    for (int x = 0; x < plotWidth; x++)
-        Console.Write(plot[y, x]);
+    Console.WriteLine("       _    ");
+    Console.WriteLine("      /_\\  ");
+    Console.WriteLine("     /___\\ ");
+    Console.WriteLine("    |=   =| ");
+    Console.WriteLine("    | NASA| ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("    |     | ");
+    Console.WriteLine("   /|##!##|\\");
+    Console.WriteLine("  / |##!##| \\");
+    Console.WriteLine(" /  |##!##|  \\");
+    Console.WriteLine("|  / ^ | ^ \\  |");
+    Console.WriteLine("| /  ( | )  \\ |");
+    Console.WriteLine("|/   ( | )   \\|");
+    Console.WriteLine("    ((   ))");
+    Console.WriteLine("   ((  :  ))");
+    Console.WriteLine("   ((  :  ))");
+    Console.WriteLine("    ((   ))");
+    Console.WriteLine("     (( ))");
+    Console.WriteLine("      ( )");
+    Console.WriteLine("       .");
+    Console.WriteLine("       .");
+    Console.WriteLine("       .");
     Console.WriteLine();
 }
 
-// Print x-axis
-Console.Write("     +");
-for (int x = 0; x < plotWidth; x++)
-    Console.Write('-');
-Console.WriteLine();
-
-// Print x-axis labels (w values at start, middle, end)
-double wStart = 1.01;
-double wEnd = 2.0;
-int mid = plotWidth / 2;
-Console.Write("      ");
-for (int x = 0; x < plotWidth; x++)
+// Copilot Generated ASCII Scatter Plot
+static void PrintAsciiScatterPlot(int[] iterations)
 {
-    if (x == 0)
-        Console.Write($"{wStart:F2}");
-    else if (x == mid)
-        Console.Write($"{wStart + (wEnd - wStart) / 2:F2}".PadLeft(plotWidth / 2 - 4));
-    else if (x == plotWidth - 1)
-        Console.Write($"{wEnd:F2}".PadLeft(plotWidth - mid));
-    // else
-        // Console.Write(" ");
-}
-Console.WriteLine();
+    int maxIterations = 0;
+    for (int i = 0; i < iterations.Length; i++)
+    {
+        if (iterations[i] > maxIterations)
+            maxIterations = iterations[i];
+    }
 
-# endregion
+    int plotHeight = 20; // Number of rows for the y-axis
+    int plotWidth = iterations.Length; // One column per w value
+
+    // Scale function for y-axis
+    int ScaleY(int value)
+    {
+        return plotHeight - 1 - (int)Math.Round((double)value / maxIterations * (plotHeight - 1));
+    }
+
+    // Build plot
+    char[,] plot = new char[plotHeight, plotWidth];
+    for (int y = 0; y < plotHeight; y++)
+        for (int x = 0; x < plotWidth; x++)
+            plot[y, x] = ' ';
+
+    // Plot points
+    for (int x = 0; x < plotWidth; x++)
+    {
+        int y = ScaleY(iterations[x]);
+        plot[y, x] = '*';
+    }
+
+    // Print y-axis labels and plot
+    Console.WriteLine();
+    for (int y = 0; y < plotHeight; y++)
+    {
+        int iterLabel = (int)Math.Round(maxIterations * (double)(plotHeight - 1 - y) / (plotHeight - 1));
+        Console.Write($"{iterLabel,4} | ");
+        for (int x = 0; x < plotWidth; x++)
+            Console.Write(plot[y, x]);
+        Console.WriteLine();
+    }
+
+    // Print x-axis
+    Console.Write("     +");
+    for (int x = 0; x < plotWidth; x++)
+        Console.Write('-');
+    Console.WriteLine();
+
+    // Print x-axis labels (w values at start, middle, end)
+    double wStart = 1.01;
+    double wEnd = 2.0;
+    int mid = plotWidth / 2;
+    Console.Write("      ");
+    for (int x = 0; x < plotWidth; x++)
+    {
+        if (x == 0)
+            Console.Write($"{wStart:F2}");
+        else if (x == mid)
+            Console.Write($"{wStart + (wEnd - wStart) / 2:F2}".PadLeft(plotWidth / 2 - 4));
+        else if (x == plotWidth - 1)
+            Console.Write($"{wEnd:F2}".PadLeft(plotWidth - mid));
+        // else
+        // Console.Write(" ");
+    }
+    Console.WriteLine();
+}
