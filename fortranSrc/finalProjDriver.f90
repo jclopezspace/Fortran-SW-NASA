@@ -35,6 +35,8 @@ PROGRAM finalProjDriver
   !PROMPTS THE USER FOR THE VALUE OF GAMMA
   WRITE(*,*) "Please input a value for gamma (-1, 1): "
   READ(*,*) gamma
+  WRITE(*,*) "You entered gamma = ", gamma
+  WRITE(*,*) ""
   
   !OBTAINS THE RIGHT HAND SIDE OF THE EQUATION (IE E*sUnfiltered + b)
   CALL getRHS(gamma, n, s, bVector)
@@ -42,22 +44,19 @@ PROGRAM finalProjDriver
   !SETS UP THE TRIDIAGONAL MATRIX WITH THEIR APPROPRIATE VALUES
   nMinus2 = n-2
   CALL initializeTridiagMatrix(uVector, dVector, lVector, gamma, nMinus2)
-  
-  !w = 2.0D0 / (1.0D0 + SQRT(1.0D0 - (gamma / 2.0D0)**2))
-  
+    
   ALLOCATE(iterations(99))
   
-  OPEN(UNIT=4, FILE="iterations1.dat", STATUS="REPLACE")
-  
+WRITE(*, '(A15)') "(W, Iterations)"
+
   DO i=1, 99
     w = 1.0D0 + i*0.01D0
-    WRITE(*,*) "W= ", w
+    
     CALL succOverRelaxation(lVector, dVector, uVector, bVector, xInitial, w, nMinus2, iterations(i))
     xInitial = 0.0D0
     
-    write(*,*) iterations(i)
+    WRITE(*,'(F4.2, I6)') w, iterations(i)
     
   END DO
-  
   
 END PROGRAM finalProjDriver

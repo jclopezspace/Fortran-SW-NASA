@@ -195,14 +195,14 @@ MODULE finalProjMod
   END SUBROUTINE succOverRelaxation
   
   !PRINTS PROGRAM HEADER
-  subroutine title()
-    write(*,*)"_________________________________________________________"
-    write(*,*)"" 
-    write(*,*)"This program was written and compiled by Steve Winward"
-    Write(*,*)"James Madison University, Mathematics Department"
-    write(*,*)"_________________________________________________________"
+  SUBROUTINE title()
+    WRITE(*,*)"_________________________________________________________"
     WRITE(*,*)"" 
-  end subroutine title
+    WRITE(*,*)"This program was written and compiled by Steve Winward"
+    WRITE(*,*)"James Madison University, Mathematics Department"
+    WRITE(*,*)"_________________________________________________________"
+    WRITE(*,*)"" 
+  END SUBROUTINE title
   
   !PERFORMS GAUSSIAN ELIMIANTION AND BACK SUBSITUTION ON A TRIDIAGONAL MATRIX
   !THIS SUBROUTINE STORES THE FINAL VALUES INTO THE B-VECTOR
