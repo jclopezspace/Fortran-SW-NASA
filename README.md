@@ -1,6 +1,8 @@
 # Fortran JMU Project
 
-This contains original Fortran 90 code I wrote for Math 448 at James Madison University in 2007.  
+This repository contains a portion of a programming project I worked on at James Madison University in their Math 448 Numerical Methods course in 2007.  The programming assignment was to implement various numerical method algorithms in Fortran 90 code.  
+
+I have included a portion of that programming assignment in this repository to show off how you can use GitHub Copilot to modernize legacy code.
 
 The folder [fortranSrc](fortranSrc) has the original unmodified Fortran code I wrote for the project.
 
