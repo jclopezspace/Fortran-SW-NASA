@@ -43,6 +43,8 @@ while (!double.TryParse(gammaInput, out gamma))
     gammaInput = Console.ReadLine();
 }
 
+Console.WriteLine("");
+
 // Obtain the right hand side of the equation
 FortranModule.GetRHS(gamma, n, s, bVector);
 
@@ -52,15 +54,13 @@ FortranModule.InitializeTridiagMatrix(uVector, dVector, lVector, gamma, nMinus2)
 // Allocate for iterations
 int[] iterations = new int[99];
 
-using (var writer = new StreamWriter("iterations1.dat"))
+Console.WriteLine("(W, Iterations)");
+
+for (int i = 1; i <= 99; i++)
 {
-    for (int i = 1; i <= 99; i++)
-    {
-        double w = 1.0 + i * 0.01;
-        Console.WriteLine($"W= {w:F4}");
-        iterations[i - 1] = FortranModule.SuccOverRelaxation(lVector, dVector, uVector, bVector, xInitial, w, nMinus2);
-        for (int j = 0; j < xInitial.Length; j++) xInitial[j] = 0.0;
-        Console.WriteLine(iterations[i - 1]);
-        writer.WriteLine(iterations[i - 1]);
-    }
+    double w = 1.0 + i * 0.01;
+    iterations[i - 1] = FortranModule.SuccOverRelaxation(lVector, dVector, uVector, bVector, xInitial, w, nMinus2);
+    for (int j = 0; j < xInitial.Length; j++) xInitial[j] = 0.0;
+
+    Console.WriteLine($"{w:F2}, {iterations[i-1]}");
 }
