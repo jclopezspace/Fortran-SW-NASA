@@ -60,13 +60,15 @@ public static class FortranModule
         double[] residual = new double[n];
         double[] tempVector = new double[n];
         int maxIterations = 1000;
-        double tolerance = Math.Sqrt(0.000001);
+        double tolerance = Math.Sqrt(0.000000000000001);
         double bVectorNorm = NormInfinity(bVector, n);
         double toleranceProduct = tolerance * bVectorNorm;
         int iterations = 0;
 
         for (int i = 0; i < maxIterations; i++)
         {
+            iterations = i + 1;
+
             TriDiagMatrixTimesVector(lVector, dVector, uVector, xInitial, tempVector, n);
             for (int j = 0; j < n; j++)
                 residual[j] = bVector[j] - tempVector[j];
@@ -74,7 +76,6 @@ public static class FortranModule
             double residualNorm = NormInfinity(residual, n);
             if (residualNorm < toleranceProduct)
             {
-                iterations = i + 1;
                 break;
             }
 
@@ -96,6 +97,7 @@ public static class FortranModule
             for (int j = 0; j < n; j++)
                 xInitial[j] = xNew[j];
         }
+
         return iterations;
     }
 
